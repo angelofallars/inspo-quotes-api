@@ -1,8 +1,10 @@
-# Inspo Quotes API
+# 🎆 Inspo Quotes API
 
 An API for inspirational quotes, built with FastAPI.
 
-## Setup
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+
+## 🔨 Setup
 
 This program requires Python 3.10.
 
@@ -25,7 +27,7 @@ source ./venv/bin/activate
 uvicorn main:app --reload
 ```
 
-## API endpoints
+## ➡️ API endpoints
 
 ### `GET /`
 
@@ -60,7 +62,7 @@ $ curl 127.0.0.1:8000/q/5
 Add a new quote. You will get the ID of the quote through the JSON response.
 
 ```bash
-$ curl 127.0.0.1:8000/add -X POST -H "Content-Type: application/json" -d '{ "text": "You miss all the shots you don't take." }'
+$ curl 127.0.0.1:8000/add -X POST -H "Content-Type: application/json" -d '{ "text": "You miss all the shots you don'\''t take." }'
 
 {
     "id": 10,
@@ -73,7 +75,7 @@ $ curl 127.0.0.1:8000/add -X POST -H "Content-Type: application/json" -d '{ "tex
 Update a quote by ID with new text.
 
 ```bash
-$ curl 127.0.0.1:8000/update -X POST -H "Content-Type: application/json" -d '{ "id": 6, "text": "When you have a dream, you've got to grab it and never let go." }'
+$ curl 127.0.0.1:8000/update -X POST -H "Content-Type: application/json" -d '{ "id": 6, "text": "When you have a dream, you'\''ve got to grab it and never let go." }'
 
 {
     "status": 200
@@ -92,6 +94,6 @@ $ curl -X POST 127.0.0.1:8000/delete -H "Content-Type: application/json" -d '{ "
 }
 ```
 
-## License
+## 📄 License
 
-This program is licensed under MIT.
+This program is licensed under the MIT license.
