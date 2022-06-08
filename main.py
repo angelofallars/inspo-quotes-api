@@ -60,6 +60,11 @@ def add_inspo_quote(quote: Quote):
             "message": "You must include a 'text' attribute for add quotes.",
             "status": 404
         }
+    elif len(quote.text) > 100:
+        return {
+            "message": "Quote length cannot be more than 100 characters.",
+            "status": 404
+        }
 
     new_quote_id = database.insert_quote(quote.text)
     return {

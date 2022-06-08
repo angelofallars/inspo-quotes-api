@@ -61,7 +61,7 @@ $ curl 127.0.0.1:8000/q/5
 
 ### `POST /add`
 
-Add a new quote. You will get the ID of the quote through the JSON response.
+Add a new quote. You will get the ID of the quote through the JSON response. The max quote length is 100 characters.
 
 ```bash
 $ curl 127.0.0.1:8000/add -X POST -H "Content-Type: application/json" -d '{ "text": "You miss all the shots you don'\''t take." }'
