@@ -10,4 +10,6 @@ COPY . /code
 
 RUN rm /code/quotes.db
 
+RUN python3 /code/init_db.py
+
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
