@@ -90,7 +90,7 @@ def update_inspo_quote(quote: Quote):
     match result:
         case Ok(_):
             return {"status": 200}
-    
+
         case Err(_):
             return {
                 "message":
@@ -114,7 +114,7 @@ def delete_inspo_quote(quote: Quote):
     match result:
         case Ok(_):
             return {"status": 200}
-    
+
         case Err(_):
             return {
                 "message":
