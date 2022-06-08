@@ -18,7 +18,8 @@ def get_random_inspo_quote(accept: str | None = Header(default="text/plain")):
         match quote_content:
             case Ok(value):
                 return {
-                    **value,
+                    "id": value.id,
+                    "id": value.text,
                     "status": 200
                 }
             case Err(_):
@@ -30,7 +31,7 @@ def get_random_inspo_quote(accept: str | None = Header(default="text/plain")):
     else:
         match quote_content:
             case Ok(value):
-                return value["quote"]
+                return value.text
             case Err(_):
                 return "No quote could be found"
 
@@ -46,7 +47,8 @@ def get_inspo_quote(
         match quote_content:
             case Ok(value):
                 return {
-                    **value,
+                    "id": value.id,
+                    "id": value.text,
                     "status": 200
                 }
             case Err(_):
@@ -58,7 +60,7 @@ def get_inspo_quote(
     else:
         match quote_content:
             case Ok(value):
-                return value["quote"]
+                return value.text
             case Err(_):
                 return f"No quote with id '{id}' could be found"
 

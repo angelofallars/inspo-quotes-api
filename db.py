@@ -3,6 +3,7 @@ from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData
 from sqlalchemy.engine.cursor import CursorResult
 from sqlalchemy.engine.row import Row
 from sqlalchemy.sql.expression import delete, func, select, update
+from quote import Quote
 
 
 class Connection:
@@ -29,7 +30,7 @@ class Connection:
             return new_quote_id
 
     # Return the ID and the content of one random quote
-    def read_random_quote(self) -> Result[dict, str]:
+    def read_random_quote(self) -> Result[Quote, str]:
         expression = select(self.__quotes) \
             .order_by(func.random()) \
             .limit(1)
@@ -41,12 +42,9 @@ class Connection:
         if result is None:
             return Err("No quote could be found. Possibly empty quotes list?")
         else:
-            return Ok({
-                "id": result[0],
-                "quote": result[1]
-            })
+            return Ok(Quote(id=result[0], text=result[1]))
 
-    def read_quote(self, id: int) -> Result[dict, str]:
+    def read_quote(self, id: int) -> Result[Quote, str]:
         expression = select(self.__quotes)\
             .where(self.__quotes.c.id == id)
 
@@ -57,10 +55,7 @@ class Connection:
         if result is None:
             return Err(f"A quote with id '{id}' could not be found.")
         else:
-            return Ok({
-                      "id": result[0],
-                      "quote": result[1]
-                      })
+            return Ok(Quote(id=result[0], text=result[1]))
 
     def update_quote(self, id: int, text: str) -> Result[None, str]:
         expression = update(self.__quotes) \
