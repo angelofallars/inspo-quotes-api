@@ -19,7 +19,8 @@ class Connection:
         self.__meta.create_all(self.__engine)
 
     def insert_quote(self, quote: str) -> int:
-        expression = self.__quotes.insert().values(text=quote)
+        expression = self.__quotes.insert() \
+            .values(text=quote)
 
         with self.__engine.connect() as con:
             result = con.execute(expression)
@@ -29,7 +30,9 @@ class Connection:
 
     # Return the ID and the content of one random quote
     def read_random_quote(self) -> Result[dict, str]:
-        expression = select(self.__quotes).order_by(func.random()).limit(1)
+        expression = select(self.__quotes) \
+            .order_by(func.random()) \
+            .limit(1)
 
         result: Row | None
         with self.__engine.connect() as con:
@@ -44,7 +47,8 @@ class Connection:
             })
 
     def read_quote(self, id: int) -> Result[dict, str]:
-        expression = select(self.__quotes).where(self.__quotes.c.id == id)
+        expression = select(self.__quotes)\
+            .where(self.__quotes.c.id == id)
 
         result: Row | None
         with self.__engine.connect() as con:
@@ -59,7 +63,9 @@ class Connection:
                       })
 
     def update_quote(self, id: int, text: str) -> Result[None, str]:
-        expression = update(self.__quotes).where(self.__quotes.c.id == id).values(text=text)
+        expression = update(self.__quotes) \
+            .where(self.__quotes.c.id == id) \
+            .values(text=text)
 
         result: CursorResult
         with self.__engine.connect() as con:
@@ -73,7 +79,8 @@ class Connection:
             return Ok(None)
 
     def delete_quote(self, id: int) -> Result[None, str]:
-        expression = delete(self.__quotes).where(self.__quotes.c.id == id)
+        expression = delete(self.__quotes) \
+            .where(self.__quotes.c.id == id)
 
         result: CursorResult
         with self.__engine.connect() as con:
