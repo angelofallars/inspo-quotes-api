@@ -1,18 +1,12 @@
-from typing import Optional
 from fastapi.params import Header
-
 from result import Ok, Err, Result
 from fastapi import FastAPI
-from pydantic import BaseModel
+
 from db import Connection
+from quote import Quote
 
 app = FastAPI()
 database = Connection()
-
-
-class Quote(BaseModel):
-    id: Optional[int]
-    text: Optional[str]
 
 
 # Fetch a random inspo quote.
