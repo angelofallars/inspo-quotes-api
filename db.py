@@ -54,9 +54,9 @@ class Connection:
             return Err(f"A quote with id '{id}' could not be found.")
         else:
             return Ok({
-                          "id": result[0],
-                          "quote": result[1]
-            })
+                      "id": result[0],
+                      "quote": result[1]
+                      })
 
     def update_quote(self, id: int, text: str) -> Result[None, str]:
         expression = update(self.__quotes).where(self.__quotes.c.id == id).values(text=text)
