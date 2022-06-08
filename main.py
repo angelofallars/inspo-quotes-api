@@ -136,6 +136,6 @@ def delete_inspo_quote(quote: Quote):
         case Err(_):
             return {
                 "message":
-                f"Could not delete quote with id '{id}'. Does it exist?",
+                f"Could not delete quote with id '{quote.id}'. Does it exist?",
                 "status": 404
             }
