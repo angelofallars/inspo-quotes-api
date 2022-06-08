@@ -8,9 +8,11 @@ from db import Connection
 app = FastAPI()
 database = Connection()
 
+
 class Quote(BaseModel):
     id: Optional[int]
     text: Optional[str]
+
 
 # Fetch a random inspo quote.
 @app.get("/")

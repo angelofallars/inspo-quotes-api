@@ -4,6 +4,7 @@ from sqlalchemy.engine.cursor import CursorResult
 from sqlalchemy.engine.row import Row
 from sqlalchemy.sql.expression import delete, func, select, update
 
+
 class Connection:
     def __init__(self):
         self.__engine = create_engine("sqlite:///quotes.db", echo=True)
