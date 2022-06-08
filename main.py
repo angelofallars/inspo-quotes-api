@@ -19,7 +19,7 @@ def get_random_inspo_quote(accept: str | None = Header(default="text/plain")):
             case Ok(value):
                 return {
                     "id": value.id,
-                    "id": value.text,
+                    "quote": value.text,
                     "status": 200
                 }
             case Err(_):
@@ -48,7 +48,7 @@ def get_inspo_quote(
             case Ok(value):
                 return {
                     "id": value.id,
-                    "id": value.text,
+                    "quote": value.text,
                     "status": 200
                 }
             case Err(_):
