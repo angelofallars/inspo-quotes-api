@@ -29,6 +29,14 @@ source ./venv/bin/activate
 uvicorn main:app --reload
 ```
 
+## API response format
+
+The default response format for all the `GET` requests is plain text, but you can provide another HTTP `Accept` header to modify the response format.
+
+Available `Accept` headers:
+- `text/plain` - Plain text response (default)
+- `application/json` - JSON response
+
 ## ➡️ API endpoints
 
 ### `GET /`

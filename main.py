@@ -1,4 +1,5 @@
 from typing import Optional
+from fastapi.params import Header
 
 from result import Ok, Err, Result
 from fastapi import FastAPI
@@ -16,40 +17,56 @@ class Quote(BaseModel):
 
 # Fetch a random inspo quote.
 @app.get("/")
-def get_random_inspo_quote():
+def get_random_inspo_quote(accept: str | None = Header(default="text/plain")):
     quote_content = database.read_random_quote()
 
-    match quote_content:
-        case Ok(value):
-            return {
-                **value,
-                "status": 200
-            }
+    if accept == "application/json":
+        match quote_content:
+            case Ok(value):
+                return {
+                    **value,
+                    "status": 200
+                }
+            case Err(_):
+                return {
+                    "message": "No quote could be found",
+                    "status": 404
+                }
 
-        case Err(_):
-            return {
-                "message": "No quote could be found",
-                "status": 404
-            }
+    else:
+        match quote_content:
+            case Ok(value):
+                return value["quote"]
+            case Err(_):
+                return "No quote could be found"
 
 
 # Get an inspo quote by ID.
 @app.get("/q/{id}")
-def get_inspo_quote(id: int):
+def get_inspo_quote(
+        id: int,
+        accept: str | None = Header(default="text/plain")):
     quote_content = database.read_quote(id)
 
-    match quote_content:
-        case Ok(value):
-            return {
-                **value,
-                "status": 200
-            }
+    if accept == "application/json":
+        match quote_content:
+            case Ok(value):
+                return {
+                    **value,
+                    "status": 200
+                }
+            case Err(_):
+                return {
+                    "message": f"No quote with id '{id}' could be found",
+                    "status": 404
+                }
 
-        case Err(_):
-            return {
-                "message": f"No quote with id '{id}' could be found",
-                "status": 404
-            }
+    else:
+        match quote_content:
+            case Ok(value):
+                return value["quote"]
+            case Err(_):
+                return f"No quote with id '{id}' could be found"
 
 
 # Add an inspo quote
