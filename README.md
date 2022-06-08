@@ -4,9 +4,15 @@ An API for inspirational quotes, built with FastAPI and SQLAlchemy.
 
 With this API, you can fetch quotes, add them, update them and delete them.
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-## 🔨 Setup
+## 🐳 Setup and Run (Docker)
+
+`sudo docker build -t inspo_quotes_api ./`
+
+`sudo docker run -p 80:80 inspo_quotes_api`
+
+## 🔨 Setup (Manual)
 
 This program requires Python 3.10.
 
