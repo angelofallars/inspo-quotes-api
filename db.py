@@ -66,7 +66,9 @@ class Connection:
             result = con.execute(expression)
 
         if result.rowcount == 0:
-            return Err(f"Could not update quote with id '{id}'. Does it exist?")
+            return Err(
+                f"Could not update quote with id '{id}'. Does it exist?"
+            )
         else:
             return Ok(None)
 
@@ -78,6 +80,8 @@ class Connection:
             result = con.execute(expression)
 
         if result.rowcount == 0:
-            return Err(f"Could not delete quote with id '{id}'. Does it exist?")
+            return Err(
+                f"Could not delete quote with id '{id}'. Does it exist?"
+            )
         else:
             return Ok(None)

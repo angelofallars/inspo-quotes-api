@@ -73,13 +73,15 @@ def add_inspo_quote(quote: Quote):
 def update_inspo_quote(quote: Quote):
     if quote.id is None:
         return {
-            "message": "You must include an 'id' attribute for updating quotes.",
+            "message":
+            "You must include an 'id' attribute for updating quotes.",
             "status": 404
         }
 
     if quote.text is None:
         return {
-            "message": "You must include a 'text' attribute for updating quotes.",
+            "message":
+            "You must include a 'text' attribute for updating quotes.",
             "status": 404
         }
 
@@ -91,7 +93,8 @@ def update_inspo_quote(quote: Quote):
     
         case Err(_):
             return {
-                "message": f"Could not update quote with id '{quote.id}'. Does it exist?",
+                "message":
+                f"Could not update quote with id '{quote.id}'. Does it exist?",
                 "status": 404
             }
 
@@ -101,7 +104,8 @@ def update_inspo_quote(quote: Quote):
 def delete_inspo_quote(quote: Quote):
     if quote.id is None:
         return {
-            "message": "You must include an 'id' attribute for updating quotes.",
+            "message":
+            "You must include an 'id' attribute for updating quotes.",
             "status": 404
         }
 
@@ -113,6 +117,7 @@ def delete_inspo_quote(quote: Quote):
     
         case Err(_):
             return {
-                "message": f"Could not delete quote with id '{id}'. Does it exist?",
+                "message":
+                f"Could not delete quote with id '{id}'. Does it exist?",
                 "status": 404
             }
