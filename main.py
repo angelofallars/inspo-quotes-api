@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi.params import Header
 from result import Ok, Err, Result
 from fastapi import FastAPI
@@ -139,3 +140,7 @@ def delete_inspo_quote(quote: Quote):
                 f"Could not delete quote with id '{quote.id}'. Does it exist?",
                 "status": 404
             }
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
